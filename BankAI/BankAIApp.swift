@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+
+// Home -> User Details -> Call
+//
 @main
 struct BankAIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
