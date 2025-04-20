@@ -23,7 +23,7 @@ struct SpeechTemplate: Identifiable, Codable {
         var questionPrompt: String {
             switch self {
             case .welcomeAndPreferredLanguage(let bank, let client):
-                "Hello, this is Ash from \(bank). I'm calling to speak with\(client), I’d like to discuss some student loan opportunities that might interest you. Would you prefer to continue this conversation in English, or do you have another language preference?"
+                "Hello, this is Ash from \(bank). I'm calling to speak with \(client), I’d like to discuss some student loan opportunities that might interest you. Would you prefer to continue this conversation in English, or do you have another language preference?"
             case .isConvenientTime(let language):
                 "In \(language) language. Ask user is it convenient time for them to talk right now?"
             case .whatIsConvenientTime(let language):

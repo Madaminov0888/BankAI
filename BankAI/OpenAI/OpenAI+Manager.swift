@@ -66,7 +66,7 @@ enum OpenAIEndpoint {
                 // 1. Add file
                 let filename = url.lastPathComponent
                 let fileData = try Data(contentsOf: url)
-                let mimetype = "audio/wav"
+                let mimetype = "audio/m4a"
                 
                 body.append("--\(boundary)\r\n".data(using: .utf8)!)
                 body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
@@ -136,8 +136,12 @@ final class OpenAIManager {
         self.network = network
     }
 
-    func sendPrompt(_ prompt: String) async throws -> ChatCompletionResponse {
+    func sendPrompt(_ prompt: String, systemPrompt: String? = nil) async throws -> ChatCompletionResponse {
         let message = ChatMessage(role: .user, content: prompt)
+        if let systemPrompt {
+            let systemMessage = ChatMessage(role: .system, content: systemPrompt)
+            return try await network.request(.chatCompletion(messages: [systemMessage, message], model: "gpt-4.1"))
+        }
         return try await network.request(.chatCompletion(messages: [message], model: "gpt-4.1"))
     }
 
