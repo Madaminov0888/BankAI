@@ -14,7 +14,10 @@ import SwiftUI
 struct BankAIApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            NavigationStack {
+                HomeView()
+            }
+            .preferredColorScheme(.light)
         }
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 struct PostCallResultRequest: Codable {
     let callId: Int
     let callResult: String
-    let clientResponse: String?
+    let clientResponse: String
     let preferredLang: String?
     let newDatetime: String?
 
@@ -26,8 +26,8 @@ struct PostCallResultRequest: Codable {
 
 
 
-struct Client: Codable {
-    let clientId: Int
+struct Client: Codable, Identifiable, Hashable {
+    let id: Int
     let fullName: String
     let age: Int
     let preferredLang: String
@@ -35,7 +35,7 @@ struct Client: Codable {
     let currentCall: Call?
 
     enum CodingKeys: String, CodingKey {
-        case clientId = "client_id"
+        case id = "client_id"
         case fullName = "full_name"
         case age
         case preferredLang = "preferred_lang"
@@ -45,7 +45,7 @@ struct Client: Codable {
 }
 
 
-struct Call: Codable {
+struct Call: Codable, Hashable {
     let callId: Int
     let callDatetime: String // ISO 8601 format from Python's `datetime.isoformat()`
     let notificationType: String

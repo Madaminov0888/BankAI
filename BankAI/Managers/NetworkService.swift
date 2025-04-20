@@ -25,7 +25,7 @@ enum NetworkServiceEndpoints {
     }
 
     var url: URL? {
-        let baseURL = "http://192.168.16.143:5000/"
+        let baseURL = "http://192.168.16.113:5050/"
         var components = URLComponents(string: baseURL + path)
         components?.queryItems = queryItems
         return components?.url
