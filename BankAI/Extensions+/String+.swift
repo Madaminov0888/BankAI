@@ -54,4 +54,11 @@ extension String {
         formatter.locale = locale
         return formatter.string(from: date)
     }
+    
+    func toDate() -> Date? {
+        let iso = ISO8601DateFormatter()
+        // If your strings include fractional seconds, uncomment the next line:
+        // iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return iso.date(from: self)
+    }
 }

@@ -28,7 +28,7 @@ struct SpeechTemplate: Identifiable, Codable {
                 "In \(language) language. Ask user is it convenient time for them to talk right now?"
             case .whatIsConvenientTime(let language):
                 "In \(language) language. Ask user what is the most convenient time for them to talk? It can also be another day possibly"
-            case .initialDescribeStudentLoanOptions(let language, let clientName, let clientAge, ):
+            case .initialDescribeStudentLoanOptions(let language, let clientName, let clientAge):
                 """
 Client informations are as follows.
 Name: \(clientName)
