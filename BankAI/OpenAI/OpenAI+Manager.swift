@@ -77,7 +77,7 @@ enum OpenAIEndpoint {
                 // 2. Add model field
                 body.append("--\(boundary)\r\n".data(using: .utf8)!)
                 body.append("Content-Disposition: form-data; name=\"model\"\r\n\r\n".data(using: .utf8)!)
-                body.append("gpt-4o-transcribe\r\n".data(using: .utf8)!)
+                body.append("gpt-4o-mini-transcribe\r\n".data(using: .utf8)!)
                 
                 // 3. Finish
                 body.append("--\(boundary)--\r\n".data(using: .utf8)!)
