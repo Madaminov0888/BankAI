@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AnimatedGradientBackground: View {
     @State private var animate = false
-    let colors = [Color.purple, Color.blue, Color.teal, Color.pink]
+    let colors: [Color] = [.purple, .blue, .teal, .pink]
 
     var body: some View {
         LinearGradient(
@@ -19,8 +19,13 @@ struct AnimatedGradientBackground: View {
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
-        .animation(.easeInOut(duration: 8).repeatForever(autoreverses: true), value: animate)
-        .onAppear { animate.toggle() }
         .ignoresSafeArea()
+        .onAppear {
+            // This line only runs once when the view appears:
+            withAnimation(.easeInOut(duration: 8)
+                            .repeatForever(autoreverses: true)) {
+                animate = true
+            }
+        }
     }
 }
